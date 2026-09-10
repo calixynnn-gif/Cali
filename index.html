@@ -550,6 +550,221 @@ h1 {
     }
 }
 
+
+/* SEVERE LIGHTNING EFFECT */
+.lightning-flash {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    background: rgba(235,245,255,.18);
+    mix-blend-mode: screen;
+}
+
+.lightning-bolt {
+    position: absolute;
+    left: 50%;
+    top: -8%;
+    width: 7px;
+    height: 125%;
+    opacity: 0;
+    background: white;
+    clip-path: polygon(
+        52% 0, 43% 13%, 58% 13%, 40% 29%, 53% 29%,
+        31% 48%, 48% 48%, 24% 70%, 43% 70%, 14% 100%,
+        37% 73%, 27% 73%, 52% 51%, 39% 51%, 61% 31%,
+        48% 31%, 66% 14%, 53% 14%, 70% 0
+    );
+    filter:
+        drop-shadow(0 0 4px white)
+        drop-shadow(0 0 14px #9bd0ff)
+        drop-shadow(0 0 35px #4b9cff);
+}
+
+.lightning-bolt.b1 { transform: translateX(-190px) rotate(-9deg) scale(.9); }
+.lightning-bolt.b2 { transform: translateX(40px) rotate(7deg) scale(.7); }
+.lightning-bolt.b3 { transform: translateX(250px) rotate(12deg) scale(.55); }
+
+.lightning-branch {
+    position: absolute;
+    width: 55%;
+    height: 4px;
+    top: 48%;
+    left: 22%;
+    opacity: 0;
+    background: white;
+    clip-path: polygon(0 50%, 25% 38%, 43% 55%, 66% 25%, 100% 50%, 66% 75%, 43% 45%, 25% 62%);
+    filter: drop-shadow(0 0 8px white) drop-shadow(0 0 20px #70b8ff);
+    transform: rotate(-18deg);
+}
+
+.lightning-flash.active {
+    animation: megaLightning .85s steps(1, end);
+}
+
+.lightning-flash.active .lightning-bolt {
+    animation: boltStrike .85s steps(1, end);
+}
+
+.lightning-flash.active .lightning-branch {
+    animation: branchStrike .85s steps(1, end);
+}
+
+@keyframes megaLightning {
+    0%,100% { opacity: 0; }
+    5% { opacity: 1; }
+    9% { opacity: .08; }
+    13% { opacity: .95; }
+    19% { opacity: 0; }
+    29% { opacity: .85; }
+    34% { opacity: .03; }
+    39% { opacity: .7; }
+    48% { opacity: 0; }
+    57% { opacity: .95; }
+    63% { opacity: .05; }
+    69% { opacity: .55; }
+    78% { opacity: 0; }
+}
+
+@keyframes boltStrike {
+    0%,100% { opacity: 0; }
+    5%,9% { opacity: 1; }
+    13%,19% { opacity: .8; }
+    29% { opacity: 1; }
+    34% { opacity: 0; }
+    39% { opacity: .9; }
+    57% { opacity: 1; }
+    63% { opacity: .1; }
+    69% { opacity: .8; }
+}
+
+@keyframes branchStrike {
+    0%,100% { opacity: 0; }
+    5% { opacity: 1; }
+    9% { opacity: 0; }
+    13% { opacity: .9; }
+    19% { opacity: 0; }
+    29% { opacity: 1; }
+    34% { opacity: 0; }
+    57% { opacity: .9; }
+    63% { opacity: 0; }
+}
+
+.lightning-shake {
+    animation: screenShake .85s steps(2, end);
+}
+
+@keyframes screenShake {
+    0%,100% { transform: translate(0,0); }
+    6% { transform: translate(-7px, 4px); }
+    12% { transform: translate(8px, -3px); }
+    18% { transform: translate(-5px, -5px); }
+    30% { transform: translate(6px, 3px); }
+    39% { transform: translate(-4px, 2px); }
+    57% { transform: translate(5px, -4px); }
+    69% { transform: translate(-3px, 3px); }
+}
+
+
+/* EXTRA-VISIBLE LIGHTNING + THUNDER */
+.thunder-cloud {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        radial-gradient(circle at 65% 28%, rgba(255,255,255,.98) 0 2%, rgba(160,205,255,.45) 9%, transparent 24%),
+        rgba(180,220,255,.08);
+    mix-blend-mode: screen;
+}
+
+.thunder-cloud.active {
+    animation: thunderFlash 1s steps(1,end);
+}
+
+@keyframes thunderFlash {
+    0%,100% { opacity: 0; }
+    4% { opacity: 1; }
+    8% { opacity: .12; }
+    13% { opacity: .95; }
+    18% { opacity: 0; }
+    30% { opacity: .75; }
+    36% { opacity: 0; }
+    48% { opacity: .9; }
+    54% { opacity: .05; }
+    62% { opacity: .55; }
+    70% { opacity: 0; }
+}
+
+.bolt-main, .bolt-left, .bolt-right {
+    position: fixed;
+    z-index: 101;
+    pointer-events: none;
+    opacity: 0;
+    background: white;
+    filter: drop-shadow(0 0 5px white) drop-shadow(0 0 18px #70b9ff) drop-shadow(0 0 40px #3f8cff);
+}
+
+.bolt-main {
+    left: 62%;
+    top: -5%;
+    width: 12px;
+    height: 105%;
+    clip-path: polygon(50% 0, 40% 12%, 62% 12%, 43% 28%, 59% 28%, 33% 46%, 51% 46%, 23% 67%, 43% 67%, 8% 100%, 35% 72%, 27% 72%, 50% 49%, 38% 49%, 63% 30%, 48% 30%, 72% 13%, 55% 13%);
+}
+
+.bolt-left {
+    left: 22%;
+    top: -4%;
+    width: 9px;
+    height: 92%;
+    transform: rotate(-13deg);
+    clip-path: polygon(55% 0, 35% 18%, 58% 18%, 30% 39%, 50% 39%, 20% 62%, 40% 62%, 5% 100%, 34% 67%, 25% 67%, 54% 42%, 38% 42%, 65% 20%, 48% 20%);
+}
+
+.bolt-right {
+    left: 80%;
+    top: 4%;
+    width: 8px;
+    height: 82%;
+    transform: rotate(10deg);
+    clip-path: polygon(52% 0, 35% 20%, 58% 20%, 30% 43%, 50% 43%, 18% 70%, 39% 70%, 0 100%, 31% 75%, 23% 75%, 54% 47%, 38% 47%, 66% 22%, 49% 22%);
+}
+
+.lightning-now .bolt-main { animation: boltNow .9s steps(1,end); }
+.lightning-now .bolt-left { animation: boltNow .9s steps(1,end) .02s; }
+.lightning-now .bolt-right { animation: boltNow .9s steps(1,end) .05s; }
+
+@keyframes boltNow {
+    0%,100% { opacity: 0; }
+    4% { opacity: 1; }
+    8% { opacity: .08; }
+    13% { opacity: 1; }
+    18% { opacity: 0; }
+    30% { opacity: .95; }
+    36% { opacity: 0; }
+    48% { opacity: 1; }
+    54% { opacity: .1; }
+    62% { opacity: .8; }
+    70% { opacity: 0; }
+}
+
+.space.thunder-shake {
+    animation: thunderShake .9s steps(2,end);
+}
+
+@keyframes thunderShake {
+    0%,100% { transform: translate(0,0); }
+    5% { transform: translate(-10px,5px); }
+    10% { transform: translate(9px,-5px); }
+    15% { transform: translate(-7px,-7px); }
+    30% { transform: translate(8px,4px); }
+    48% { transform: translate(-6px,3px); }
+    62% { transform: translate(5px,-4px); }
+}
+
 /* MOBILE */
 @media (max-width: 600px) {
 
@@ -597,10 +812,146 @@ h1 {
         letter-spacing: 2px;
     }
 }
+
+/* ===== BACKGROUND UNIVERSE LIGHTNING / ELECTRIC BOLTS ===== */
+.universe-bolts {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: .9;
+}
+
+.universe-bolts::before,
+.universe-bolts::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 75vh;
+  top: -10vh;
+  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px #69bfff) drop-shadow(0 0 28px #168cff);
+  opacity: 0;
+  transform-origin: top center;
+}
+
+.universe-bolts::before {
+  left: 16%;
+  transform: rotate(17deg);
+  clip-path: polygon(48% 0, 100% 0, 61% 28%, 92% 28%, 45% 62%, 67% 62%, 25% 100%, 37% 61%, 8% 61%, 47% 27%, 18% 27%);
+  background: linear-gradient(to bottom, rgba(255,255,255,.98), #73c7ff 35%, #187dff 70%, transparent);
+  animation: bgBolt 4.8s infinite;
+}
+
+.universe-bolts::after {
+  left: 78%;
+  height: 65vh;
+  transform: rotate(-20deg);
+  clip-path: polygon(45% 0, 100% 0, 60% 30%, 90% 30%, 42% 64%, 64% 64%, 20% 100%, 35% 63%, 7% 63%, 46% 29%, 17% 29%);
+  background: linear-gradient(to bottom, rgba(255,255,255,.98), #9bdaff 35%, #277bff 70%, transparent);
+  animation: bgBolt 6.2s 1.7s infinite;
+}
+
+.bg-bolt {
+  position: absolute;
+  width: 170px;
+  height: 330px;
+  opacity: 0;
+  filter: drop-shadow(0 0 3px white) drop-shadow(0 0 10px #55b9ff) drop-shadow(0 0 24px #006eff);
+  background: linear-gradient(155deg, rgba(255,255,255,.98), #64baff 38%, #116bff 70%, transparent);
+  clip-path: polygon(44% 0, 76% 0, 57% 26%, 84% 26%, 50% 48%, 72% 48%, 25% 100%, 38% 55%, 8% 55%, 44% 30%, 20% 30%);
+}
+
+.bg-bolt.one { left: 31%; top: 4%; transform: rotate(-12deg) scale(.72); animation: bgBolt 5.5s 2.3s infinite; }
+.bg-bolt.two { left: 56%; top: 46%; transform: rotate(18deg) scale(.58); animation: bgBolt 7s 3.1s infinite; }
+.bg-bolt.three { left: 5%; top: 52%; transform: rotate(-28deg) scale(.48); animation: bgBolt 6.3s 4.2s infinite; }
+
+.universe-bolt-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 45%, rgba(150,220,255,.20), transparent 48%),
+              rgba(170,220,255,0);
+  opacity: 0;
+  animation: universeFlash 5.5s 2.3s infinite;
+}
+
+@keyframes bgBolt {
+  0%, 82%, 100% { opacity: 0; }
+  83% { opacity: .05; }
+  84% { opacity: 1; }
+  85% { opacity: .08; }
+  86% { opacity: .95; }
+  88% { opacity: 0; }
+}
+
+@keyframes universeFlash {
+  0%, 82%, 100% { opacity: 0; }
+  83% { opacity: .05; }
+  84% { opacity: .32; }
+  85% { opacity: 0; }
+  86% { opacity: .18; }
+  88% { opacity: 0; }
+}
+
+
+/* ===== THIN LINE-STYLE LIGHTNING ===== */
+.line-lightning {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+.line-lightning span {
+  position: absolute;
+  display: block;
+  height: 2px;
+  transform-origin: left center;
+  opacity: 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg, transparent, #bfeaff 15%, #fff 50%, #62baff 82%, transparent);
+  box-shadow: 0 0 3px #fff, 0 0 9px #59baff, 0 0 18px #168cff;
+}
+.line-lightning .l1 { width: 430px; left: -40px; top: 27%; transform: rotate(19deg); animation: lineStrike 4.7s 1s infinite; }
+.line-lightning .l2 { width: 360px; left: 58%; top: 19%; transform: rotate(-25deg); animation: lineStrike 5.8s 2.7s infinite; }
+.line-lightning .l3 { width: 520px; left: 31%; top: 71%; transform: rotate(-13deg); animation: lineStrike 6.2s 4s infinite; }
+.line-lightning .l4 { width: 280px; left: 73%; top: 61%; transform: rotate(31deg); animation: lineStrike 5.1s 3.4s infinite; }
+
+.line-lightning span::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  top: -7px;
+  width: 55%;
+  height: 16px;
+  background: inherit;
+  filter: blur(7px);
+  opacity: .75;
+}
+
+@keyframes lineStrike {
+  0%, 83%, 100% { opacity: 0; }
+  84% { opacity: .25; }
+  85% { opacity: 1; }
+  86% { opacity: .15; }
+  87% { opacity: .85; }
+  89% { opacity: 0; }
+}
+
 </style>
 </head>
 
 <body>
+
+<div class="line-lightning" aria-hidden="true">
+  <span class="l1"></span>
+  <span class="l2"></span>
+  <span class="l3"></span>
+  <span class="l4"></span>
+</div>
+
 
 <div class="space">
 
@@ -662,6 +1013,89 @@ h1 {
     <div class="floating-heart heart1">♥</div>
 
 </div>
+
+
+<script>
+/* BIG LIGHTNING + THUNDER EFFECT */
+const lightningRoot = document.querySelector('.space');
+const thunderCloud = document.querySelector('.thunder-cloud');
+const mainMeteor = document.querySelector('.meteor');
+
+let audioContext;
+
+function thunderSound() {
+    // Browser-safe: audio only after the visitor has interacted with the page.
+    if (!audioContext) return;
+
+    const now = audioContext.currentTime;
+    const duration = 1.2;
+    const buffer = audioContext.createBuffer(1, audioContext.sampleRate * duration, audioContext.sampleRate);
+    const data = buffer.getChannelData(0);
+
+    for (let i = 0; i < data.length; i++) {
+        const t = i / audioContext.sampleRate;
+        const envelope = Math.max(0, 1 - t / duration);
+        data[i] = (Math.random() * 2 - 1) * envelope * envelope;
+    }
+
+    const noise = audioContext.createBufferSource();
+    const filter = audioContext.createBiquadFilter();
+    const gain = audioContext.createGain();
+
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(180, now);
+    filter.frequency.exponentialRampToValueAtTime(55, now + duration);
+
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.exponentialRampToValueAtTime(0.5, now + 0.03);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+    noise.buffer = buffer;
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(audioContext.destination);
+    noise.start(now);
+    noise.stop(now + duration);
+}
+
+function enableThunderAudio() {
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioContext.state === 'suspended') audioContext.resume();
+    window.removeEventListener('pointerdown', enableThunderAudio);
+    window.removeEventListener('keydown', enableThunderAudio);
+}
+
+window.addEventListener('pointerdown', enableThunderAudio);
+window.addEventListener('keydown', enableThunderAudio);
+
+function triggerMegaLightning() {
+    thunderCloud.classList.remove('active');
+    lightningRoot.classList.remove('thunder-shake', 'lightning-now');
+
+    void thunderCloud.offsetWidth;
+
+    thunderCloud.classList.add('active');
+    lightningRoot.classList.add('thunder-shake', 'lightning-now');
+
+    thunderSound();
+
+    setTimeout(() => {
+        thunderCloud.classList.remove('active');
+        lightningRoot.classList.remove('thunder-shake', 'lightning-now');
+    }, 1050);
+}
+
+// Trigger exactly when the main named meteor completes a crossing.
+mainMeteor.addEventListener('animationiteration', triggerMegaLightning);
+
+// Also guarantee visible strikes even if animation events are throttled.
+setInterval(triggerMegaLightning, 7000);
+
+// Immediate dramatic strike so it is visible on first load.
+setTimeout(triggerMegaLightning, 900);
+</script>
 
 </body>
 </html>
