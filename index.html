@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️</title>
+<title>Cali - Glowing Garden</title>
 
 <style>
 * {
@@ -12,531 +12,142 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
-    overflow: hidden;
-    background: #02010a;
-    font-family: "Times New Roman", serif;
-    color: white;
-    height: 100vh;
-}
-
-/* SPACE */
-.space {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
     background:
-        radial-gradient(circle at 50% 50%, #171044 0%, #08051d 45%, #010106 100%);
-}
-
-/* STARS */
-.stars,
-.stars2,
-.stars3 {
-    position: absolute;
-    inset: 0;
-    background-repeat: repeat;
-    pointer-events: none;
-}
-
-.stars {
-    background-image:
-        radial-gradient(2px 2px at 10% 20%, white, transparent),
-        radial-gradient(1px 1px at 20% 70%, white, transparent),
-        radial-gradient(2px 2px at 35% 30%, white, transparent),
-        radial-gradient(1px 1px at 50% 80%, white, transparent),
-        radial-gradient(2px 2px at 70% 25%, white, transparent),
-        radial-gradient(1px 1px at 85% 65%, white, transparent),
-        radial-gradient(2px 2px at 95% 15%, white, transparent);
-    animation: starsMove 15s linear infinite;
-}
-
-.stars2 {
-    opacity: .6;
-    transform: scale(1.5);
-    background-image:
-        radial-gradient(1px 1px at 15% 40%, #bda7ff, transparent),
-        radial-gradient(2px 2px at 45% 15%, #fff, transparent),
-        radial-gradient(1px 1px at 65% 55%, #bda7ff, transparent),
-        radial-gradient(2px 2px at 90% 75%, #fff, transparent);
-    animation: starsMove 25s linear infinite reverse;
-}
-
-.stars3 {
-    opacity: .4;
-    transform: scale(2);
-    background-image:
-        radial-gradient(1px 1px at 25% 15%, #ffb6ed, transparent),
-        radial-gradient(1px 1px at 75% 30%, #a9d9ff, transparent),
-        radial-gradient(2px 2px at 40% 90%, white, transparent);
-    animation: starsMove 35s linear infinite;
-}
-
-@keyframes starsMove {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-100px);
-    }
-}
-
-/* NEBULA */
-.nebula {
-    position: absolute;
-    width: 800px;
-    height: 500px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background:
-        radial-gradient(ellipse, rgba(163, 75, 255, .18), transparent 60%);
-    filter: blur(35px);
-}
-
-/* SOLAR SYSTEM */
-.solar-system {
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* SUN */
-.sun {
-    position: absolute;
-    width: 90px;
-    height: 90px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-
-    background: radial-gradient(
-        circle at 35% 35%,
-        #fff,
-        #ffd1fa 20%,
-        #ff7ee8 45%,
-        #a92cff 75%
-    );
-
-    box-shadow:
-        0 0 25px #ff9af2,
-        0 0 60px #c83cff,
-        0 0 120px rgba(184, 46, 255, .6);
-
-    animation: pulse 3s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%,100% {
-        box-shadow:
-            0 0 25px #ff9af2,
-            0 0 60px #c83cff,
-            0 0 120px rgba(184,46,255,.5);
-    }
-
-    50% {
-        box-shadow:
-            0 0 35px #fff,
-            0 0 80px #ff63df,
-            0 0 150px rgba(184,46,255,.8);
-    }
-}
-
-/* ORBITS */
-.orbit {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    border: 1px solid rgba(190, 130, 255, .25);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.orbit1 {
-    width: 170px;
-    height: 170px;
-}
-
-.orbit2 {
-    width: 270px;
-    height: 270px;
-}
-
-.orbit3 {
-    width: 390px;
-    height: 390px;
-}
-
-.orbit4 {
-    width: 520px;
-    height: 520px;
-}
-
-.orbit5 {
-    width: 650px;
-    height: 650px;
-}
-
-/* PLANETS */
-.planet {
-    position: absolute;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform-origin: center;
-}
-
-/* Planet 1 */
-.planet1 {
-    width: 14px;
-    height: 14px;
-    background: #ffb27d;
-    box-shadow: 0 0 15px #ff8c5c;
-
-    animation: orbit1 7s linear infinite;
-}
-
-@keyframes orbit1 {
-    from {
-        transform: rotate(0deg) translateX(85px);
-    }
-    to {
-        transform: rotate(360deg) translateX(85px);
-    }
-}
-
-/* Planet 2 */
-.planet2 {
-    width: 22px;
-    height: 22px;
-    background: linear-gradient(135deg, #ffe3a1, #d88b4a);
-    box-shadow: 0 0 15px #ffc36b;
-
-    animation: orbit2 11s linear infinite;
-}
-
-@keyframes orbit2 {
-    from {
-        transform: rotate(0deg) translateX(135px);
-    }
-    to {
-        transform: rotate(360deg) translateX(135px);
-    }
-}
-
-/* Earth */
-.planet3 {
-    width: 28px;
-    height: 28px;
-
-    background:
-        radial-gradient(circle at 35% 30%, #62e6ff, #1674d1 50%, #08235e);
-
-    box-shadow:
-        0 0 15px #4ddaff,
-        0 0 30px rgba(42, 180, 255, .5);
-
-    animation: orbit3 17s linear infinite;
-}
-
-@keyframes orbit3 {
-    from {
-        transform: rotate(0deg) translateX(195px);
-    }
-    to {
-        transform: rotate(360deg) translateX(195px);
-    }
-}
-
-/* Saturn */
-.planet4 {
-    width: 42px;
-    height: 42px;
-
-    background: radial-gradient(
-        circle at 30% 30%,
-        #ffe6a5,
-        #bd7e48 60%,
-        #63391f
-    );
-
-    box-shadow: 0 0 20px rgba(255,190,110,.7);
-
-    animation: orbit4 25s linear infinite;
-}
-
-/* Saturn Ring */
-.planet4::after {
-    content: "";
-    position: absolute;
-    width: 70px;
-    height: 20px;
-    border: 3px solid rgba(255, 221, 159, .7);
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(-15deg);
-}
-
-@keyframes orbit4 {
-    from {
-        transform: rotate(0deg) translateX(260px);
-    }
-    to {
-        transform: rotate(360deg) translateX(260px);
-    }
-}
-
-/* BIG PLANET */
-.planet5 {
-    width: 55px;
-    height: 55px;
-
-    background:
-        repeating-linear-gradient(
-            0deg,
-            #d98a63 0px,
-            #d98a63 6px,
-            #8b4a68 7px,
-            #5e367f 12px
+        radial-gradient(
+            ellipse at center bottom,
+            #180a02 0%,
+            #070302 45%,
+            #000 100%
         );
-
-    box-shadow:
-        0 0 20px #9f6cff,
-        0 0 40px rgba(128, 80, 255, .5);
-
-    animation: orbit5 34s linear infinite;
+    font-family: cursive;
 }
 
-@keyframes orbit5 {
-    from {
-        transform: rotate(0deg) translateX(325px);
-    }
-    to {
-        transform: rotate(360deg) translateX(325px);
-    }
-}
+/* BACKGROUND LIGHT */
 
-/* CENTER TEXT */
-.content {
+.background-glow {
     position: absolute;
-    z-index: 10;
-
+    width: 60vw;
+    height: 30vh;
     left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    text-align: center;
-
-    width: 90%;
-    max-width: 700px;
-
-    pointer-events: none;
+    bottom: -10vh;
+    transform: translateX(-50%);
+    background: #ff4b00;
+    filter: blur(10vw);
+    opacity: .12;
 }
 
-.small-title {
-    font-size: 18px;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    opacity: .8;
+/* CALI */
 
-    text-shadow: 0 0 15px #d99aff;
-}
+.name {
+    position: absolute;
+    top: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
 
-h1 {
-    margin-top: 8px;
-
-    font-size: clamp(55px, 10vw, 110px);
-
-    font-weight: normal;
-
+    font-size: clamp(55px, 9vw, 125px);
+    font-weight: bold;
     font-style: italic;
+    letter-spacing: clamp(3px, .7vw, 10px);
 
-    color: #fff;
-
-    text-shadow:
-        0 0 10px #fff,
-        0 0 25px #ff9be8,
-        0 0 50px #b64dff,
-        0 0 90px #873cff;
-}
-
-.heart {
-    font-size: 35px;
-    margin: 10px 0;
-
-    color: #ff9de9;
+    color: #fff5a3;
+    white-space: nowrap;
 
     text-shadow:
-        0 0 10px #ff9de9,
-        0 0 30px #ff4fce;
+        0 0 5px #fff,
+        0 0 15px #ffd000,
+        0 0 30px #ff8c00,
+        0 0 60px #ff4b00,
+        0 0 100px #ff3000;
 
-    animation: heartBeat 1.5s infinite;
+    animation: nameGlow 2.5s ease-in-out infinite;
+
+    z-index: 30;
 }
 
-@keyframes heartBeat {
+@keyframes nameGlow {
     0%,100% {
-        transform: scale(1);
+        filter: brightness(.9);
     }
 
     50% {
-        transform: scale(1.25);
+        filter: brightness(1.4);
     }
 }
 
-.message {
-    font-size: 18px;
-    letter-spacing: 3px;
-    opacity: .8;
-}
+/* MAGIC ENERGY */
 
-/* CALI METEOR */
-.meteor {
+.vine {
     position: absolute;
-    z-index: 20;
+    top: 19vh;
+    left: 50%;
 
-    top: 18%;
-    left: -200px;
-
-    width: 180px;
-    height: 3px;
+    width: clamp(1px, .25vw, 3px);
+    height: 43vh;
 
     background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.3),
-        white
+        to bottom,
+        #fff36b,
+        #ff8700,
+        transparent
     );
 
-    transform: rotate(-20deg);
-
     filter:
-        drop-shadow(0 0 5px white)
-        drop-shadow(0 0 15px #d783ff);
+        drop-shadow(0 0 5px #ffcf00)
+        drop-shadow(0 0 15px #ff5a00);
 
-    animation: meteorMove 7s linear infinite;
-}
-
-.meteor::before {
-    content: "WEL";
-
-    position: absolute;
-
-    right: 20px;
-    top: -30px;
-
-    font-family: "Times New Roman", serif;
-
-    font-size: 22px;
-    font-weight: bold;
-
-    letter-spacing: 5px;
-
-    color: white;
-
-    text-shadow:
-        0 0 5px white,
-        0 0 15px #ff8ee8,
-        0 0 30px #9c5cff;
-}
-
-.meteor::after {
-    content: "";
-
-    position: absolute;
-
-    right: 0;
-    top: -4px;
-
-    width: 11px;
-    height: 11px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    box-shadow:
-        0 0 10px white,
-        0 0 25px #ffb3ef,
-        0 0 45px #a85cff;
-}
-
-@keyframes meteorMove {
-    0% {
-        left: -250px;
-        top: 15%;
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    60% {
-        opacity: 1;
-    }
-
-    100% {
-        left: 120%;
-        top: 75%;
-        opacity: 0;
-    }
-}
-
-/* SECOND METEOR */
-.meteor2 {
-    top: 5%;
-    left: -300px;
-    animation-delay: 4s;
-    animation-duration: 9s;
-    transform: rotate(25deg) scale(.7);
-}
-.meteor3 {
-    top: 5%;
-    left: -300px;
-    animation-delay: 4s;
-    animation-duration: 9s;
-    transform: rotate(25deg) scale(.7);
-}
-
-/* FLOATING HEARTS */
-.floating-heart {
-    position: absolute;
+    opacity: .8;
     z-index: 5;
 
-    color: rgba(255, 159, 235, .7);
-
-    font-size: 18px;
-
-    animation: floatHeart 8s linear infinite;
+    transform-origin: top;
 }
 
-.heart1 {
-    left: 15%;
-    bottom: -30px;
-    animation-delay: 1s;
+.vine1 {
+    transform: rotate(-25deg);
 }
 
-.heart2 {
-    left: 80%;
-    bottom: -30px;
-    animation-delay: 4s;
+.vine2 {
+    transform: rotate(25deg);
 }
 
-.heart3 {
-    left: 45%;
-    bottom: -30px;
-    animation-delay: 6s;
+.vine3 {
+    transform: rotate(-10deg);
 }
 
-@keyframes floatHeart {
+.vine4 {
+    transform: rotate(10deg);
+}
+
+/* ENERGY PARTICLES */
+
+.energy {
+    position: absolute;
+
+    width: clamp(4px, .5vw, 8px);
+    height: clamp(4px, .5vw, 8px);
+
+    border-radius: 50%;
+    background: #fff8a0;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 20px #ffb000,
+        0 0 35px #ff4b00;
+
+    animation: energyMove 3s linear infinite;
+
+    z-index: 20;
+}
+
+@keyframes energyMove {
     0% {
-        transform: translateY(0) scale(.7);
+        transform: translateY(0) scale(.4);
         opacity: 0;
     }
 
@@ -544,558 +155,520 @@ h1 {
         opacity: 1;
     }
 
+    80% {
+        opacity: 1;
+    }
+
     100% {
-        transform: translateY(-100vh) scale(1.4) rotate(30deg);
+        transform: translateY(42vh) scale(1.3);
         opacity: 0;
     }
 }
 
+/* FLOWER */
 
-/* SEVERE LIGHTNING EFFECT */
-.lightning-flash {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    pointer-events: none;
-    opacity: 0;
-    background: rgba(235,245,255,.18);
-    mix-blend-mode: screen;
+.flower {
+    position: absolute;
+
+    width: clamp(75px, 9vw, 135px);
+    height: clamp(280px, 48vh, 470px);
+
+    bottom: -5vh;
+
+    transform-origin: bottom center;
+
+    animation: sway 5s ease-in-out infinite;
+
+    z-index: 10;
 }
 
-.lightning-bolt {
+@keyframes sway {
+    0%,100% {
+        rotate: -2deg;
+    }
+
+    50% {
+        rotate: 2deg;
+    }
+}
+
+/* STEM */
+
+.stem {
     position: absolute;
+
+    width: clamp(3px, .35vw, 6px);
+    height: 80%;
+
+    bottom: 0;
     left: 50%;
-    top: -8%;
-    width: 7px;
-    height: 125%;
-    opacity: 0;
-    background: white;
-    clip-path: polygon(
-        52% 0, 43% 13%, 58% 13%, 40% 29%, 53% 29%,
-        31% 48%, 48% 48%, 24% 70%, 43% 70%, 14% 100%,
-        37% 73%, 27% 73%, 52% 51%, 39% 51%, 61% 31%,
-        48% 31%, 66% 14%, 53% 14%, 70% 0
+
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        to right,
+        #351004,
+        #ff4b08,
+        #5a1604
     );
-    filter:
-        drop-shadow(0 0 4px white)
-        drop-shadow(0 0 14px #9bd0ff)
-        drop-shadow(0 0 35px #4b9cff);
+
+    box-shadow:
+        0 0 8px #ff4b08,
+        0 0 20px #ff3900;
 }
 
-.lightning-bolt.b1 { transform: translateX(-190px) rotate(-9deg) scale(.9); }
-.lightning-bolt.b2 { transform: translateX(40px) rotate(7deg) scale(.7); }
-.lightning-bolt.b3 { transform: translateX(250px) rotate(12deg) scale(.55); }
+/* LEAVES */
 
-.lightning-branch {
+.leaf {
     position: absolute;
-    width: 55%;
-    height: 4px;
-    top: 48%;
-    left: 22%;
-    opacity: 0;
-    background: white;
-    clip-path: polygon(0 50%, 25% 38%, 43% 55%, 66% 25%, 100% 50%, 66% 75%, 43% 45%, 25% 62%);
-    filter: drop-shadow(0 0 8px white) drop-shadow(0 0 20px #70b8ff);
-    transform: rotate(-18deg);
+
+    width: clamp(30px, 4vw, 55px);
+    height: clamp(13px, 1.7vw, 23px);
+
+    background: linear-gradient(
+        90deg,
+        #421406,
+        #e34b0a
+    );
+
+    border-radius: 100% 0 100% 0;
+
+    box-shadow:
+        0 0 8px #ff4b08,
+        0 0 18px #ff3500;
 }
 
-.lightning-flash.active {
-    animation: megaLightning .85s steps(1, end);
+.left {
+    left: 5%;
+    transform: rotate(-30deg);
 }
 
-.lightning-flash.active .lightning-bolt {
-    animation: boltStrike .85s steps(1, end);
+.right {
+    right: 5%;
+    transform: rotate(30deg) scaleX(-1);
 }
 
-.lightning-flash.active .lightning-branch {
-    animation: branchStrike .85s steps(1, end);
+.l1 { bottom: 16%; }
+.l2 { bottom: 26%; }
+.l3 { bottom: 36%; }
+.l4 { bottom: 46%; }
+.l5 { bottom: 56%; }
+
+/* FLOWER HEAD */
+
+.head {
+    position: absolute;
+
+    width: 100%;
+    aspect-ratio: 1;
+
+    left: 0;
+    bottom: 73%;
 }
 
-@keyframes megaLightning {
-    0%,100% { opacity: 0; }
-    5% { opacity: 1; }
-    9% { opacity: .08; }
-    13% { opacity: .95; }
-    19% { opacity: 0; }
-    29% { opacity: .85; }
-    34% { opacity: .03; }
-    39% { opacity: .7; }
-    48% { opacity: 0; }
-    57% { opacity: .95; }
-    63% { opacity: .05; }
-    69% { opacity: .55; }
-    78% { opacity: 0; }
+/* PETALS */
+
+.petal {
+    position: absolute;
+
+    width: 34%;
+    height: 55%;
+
+    left: 33%;
+    top: 23%;
+
+    border-radius: 50% 50% 45% 45%;
+
+    background: linear-gradient(
+        to bottom,
+        #ff8700,
+        #ff3b00
+    );
+
+    transform-origin: 50% 100%;
+
+    box-shadow:
+        0 0 10px #ff6500,
+        0 0 25px #ff4200,
+        0 0 50px #ff2500;
+
+    animation: petalGlow 2s ease-in-out infinite;
 }
 
-@keyframes boltStrike {
-    0%,100% { opacity: 0; }
-    5%,9% { opacity: 1; }
-    13%,19% { opacity: .8; }
-    29% { opacity: 1; }
-    34% { opacity: 0; }
-    39% { opacity: .9; }
-    57% { opacity: 1; }
-    63% { opacity: .1; }
-    69% { opacity: .8; }
+@keyframes petalGlow {
+    0%,100% {
+        filter: brightness(.9);
+    }
+
+    50% {
+        filter: brightness(1.4);
+    }
 }
 
-@keyframes branchStrike {
-    0%,100% { opacity: 0; }
-    5% { opacity: 1; }
-    9% { opacity: 0; }
-    13% { opacity: .9; }
-    19% { opacity: 0; }
-    29% { opacity: 1; }
-    34% { opacity: 0; }
-    57% { opacity: .9; }
-    63% { opacity: 0; }
+.p1 { transform: rotate(0deg); }
+.p2 { transform: rotate(45deg); }
+.p3 { transform: rotate(90deg); }
+.p4 { transform: rotate(135deg); }
+.p5 { transform: rotate(180deg); }
+.p6 { transform: rotate(225deg); }
+.p7 { transform: rotate(270deg); }
+.p8 { transform: rotate(315deg); }
+
+/* CENTER */
+
+.center {
+    position: absolute;
+
+    width: 35%;
+    aspect-ratio: 1;
+
+    left: 32.5%;
+    top: 33%;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        #fff 0%,
+        #fff36a 30%,
+        #ffb000 65%,
+        #ff4b00 100%
+    );
+
+    z-index: 10;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #fff000,
+        0 0 50px #ff9d00,
+        0 0 80px #ff4500;
+
+    animation: centerPulse 1.8s infinite;
 }
 
-.lightning-shake {
-    animation: screenShake .85s steps(2, end);
+@keyframes centerPulse {
+    0%,100% {
+        scale: .9;
+    }
+
+    50% {
+        scale: 1.15;
+    }
 }
 
-@keyframes screenShake {
-    0%,100% { transform: translate(0,0); }
-    6% { transform: translate(-7px, 4px); }
-    12% { transform: translate(8px, -3px); }
-    18% { transform: translate(-5px, -5px); }
-    30% { transform: translate(6px, 3px); }
-    39% { transform: translate(-4px, 2px); }
-    57% { transform: translate(5px, -4px); }
-    69% { transform: translate(-3px, 3px); }
+/* SPARKS */
+
+.spark {
+    position: absolute;
+
+    width: clamp(3px, .4vw, 6px);
+    height: clamp(3px, .4vw, 6px);
+
+    border-radius: 50%;
+
+    background: #ffd36b;
+
+    box-shadow:
+        0 0 10px #ff8c00,
+        0 0 25px #ff4500;
+
+    animation: float 5s linear infinite;
 }
 
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
 
-/* EXTRA-VISIBLE LIGHTNING + THUNDER */
-.thunder-cloud {
-    position: fixed;
-    inset: 0;
-    z-index: 99;
-    pointer-events: none;
-    opacity: 0;
-    background:
-        radial-gradient(circle at 65% 28%, rgba(255,255,255,.98) 0 2%, rgba(160,205,255,.45) 9%, transparent 24%),
-        rgba(180,220,255,.08);
-    mix-blend-mode: screen;
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-45vh);
+        opacity: 0;
+    }
 }
 
-.thunder-cloud.active {
-    animation: thunderFlash 1s steps(1,end);
-}
+/* =========================
+   PHONE
+========================= */
 
-@keyframes thunderFlash {
-    0%,100% { opacity: 0; }
-    4% { opacity: 1; }
-    8% { opacity: .12; }
-    13% { opacity: .95; }
-    18% { opacity: 0; }
-    30% { opacity: .75; }
-    36% { opacity: 0; }
-    48% { opacity: .9; }
-    54% { opacity: .05; }
-    62% { opacity: .55; }
-    70% { opacity: 0; }
-}
-
-.bolt-main, .bolt-left, .bolt-right {
-    position: fixed;
-    z-index: 101;
-    pointer-events: none;
-    opacity: 0;
-    background: white;
-    filter: drop-shadow(0 0 5px white) drop-shadow(0 0 18px #70b9ff) drop-shadow(0 0 40px #3f8cff);
-}
-
-.bolt-main {
-    left: 62%;
-    top: -5%;
-    width: 12px;
-    height: 105%;
-    clip-path: polygon(50% 0, 40% 12%, 62% 12%, 43% 28%, 59% 28%, 33% 46%, 51% 46%, 23% 67%, 43% 67%, 8% 100%, 35% 72%, 27% 72%, 50% 49%, 38% 49%, 63% 30%, 48% 30%, 72% 13%, 55% 13%);
-}
-
-.bolt-left {
-    left: 22%;
-    top: -4%;
-    width: 9px;
-    height: 92%;
-    transform: rotate(-13deg);
-    clip-path: polygon(55% 0, 35% 18%, 58% 18%, 30% 39%, 50% 39%, 20% 62%, 40% 62%, 5% 100%, 34% 67%, 25% 67%, 54% 42%, 38% 42%, 65% 20%, 48% 20%);
-}
-
-.bolt-right {
-    left: 80%;
-    top: 4%;
-    width: 8px;
-    height: 82%;
-    transform: rotate(10deg);
-    clip-path: polygon(52% 0, 35% 20%, 58% 20%, 30% 43%, 50% 43%, 18% 70%, 39% 70%, 0 100%, 31% 75%, 23% 75%, 54% 47%, 38% 47%, 66% 22%, 49% 22%);
-}
-
-.lightning-now .bolt-main { animation: boltNow .9s steps(1,end); }
-.lightning-now .bolt-left { animation: boltNow .9s steps(1,end) .02s; }
-.lightning-now .bolt-right { animation: boltNow .9s steps(1,end) .05s; }
-
-@keyframes boltNow {
-    0%,100% { opacity: 0; }
-    4% { opacity: 1; }
-    8% { opacity: .08; }
-    13% { opacity: 1; }
-    18% { opacity: 0; }
-    30% { opacity: .95; }
-    36% { opacity: 0; }
-    48% { opacity: 1; }
-    54% { opacity: .1; }
-    62% { opacity: .8; }
-    70% { opacity: 0; }
-}
-
-.space.thunder-shake {
-    animation: thunderShake .9s steps(2,end);
-}
-
-@keyframes thunderShake {
-    0%,100% { transform: translate(0,0); }
-    5% { transform: translate(-10px,5px); }
-    10% { transform: translate(9px,-5px); }
-    15% { transform: translate(-7px,-7px); }
-    30% { transform: translate(8px,4px); }
-    48% { transform: translate(-6px,3px); }
-    62% { transform: translate(5px,-4px); }
-}
-
-/* MOBILE */
 @media (max-width: 600px) {
 
-    .solar-system {
-        width: 500px;
-        height: 500px;
+    .name {
+        top: 6vh;
+        font-size: clamp(50px, 18vw, 85px);
     }
 
-    .orbit1 {
-        width: 120px;
-        height: 120px;
+    .vine {
+        top: 20vh;
+        height: 35vh;
     }
 
-    .orbit2 {
-        width: 190px;
-        height: 190px;
+    .flower {
+        width: 23vw;
+        height: 48vh;
+        bottom: -5vh;
     }
 
-    .orbit3 {
-        width: 270px;
-        height: 270px;
+    .flower.centerFlower {
+        width: 28vw;
     }
 
-    .orbit4 {
-        width: 360px;
-        height: 360px;
+    .leftFlower {
+        left: 3vw;
     }
 
-    .orbit5 {
-        width: 450px;
-        height: 450px;
+    .centerFlower {
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .small-title {
-        font-size: 12px;
-        letter-spacing: 5px;
+    .rightFlower {
+        right: 3vw;
     }
 
-    h1 {
-        font-size: 60px;
-    }
-
-    .message {
-        font-size: 14px;
-        letter-spacing: 2px;
+    .smallFlower {
+        transform: scale(.65);
     }
 }
 
-/* ===== BACKGROUND UNIVERSE LIGHTNING / ELECTRIC BOLTS ===== */
-.universe-bolts {
-  position: fixed;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  overflow: hidden;
-  opacity: .9;
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+    .name {
+        font-size: 18vw;
+        top: 5vh;
+    }
+
+    .flower {
+        width: 25vw;
+        height: 45vh;
+    }
+
+    .flower.centerFlower {
+        width: 30vw;
+    }
 }
 
-.universe-bolts::before,
-.universe-bolts::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 75vh;
-  top: -10vh;
-  filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 12px #69bfff) drop-shadow(0 0 28px #168cff);
-  opacity: 0;
-  transform-origin: top center;
+/* =========================
+   LANDSCAPE PHONE
+========================= */
+
+@media (max-height: 500px) {
+
+    .name {
+        top: 2vh;
+        font-size: clamp(40px, 11vh, 75px);
+    }
+
+    .flower {
+        height: 85vh;
+        bottom: -15vh;
+    }
+
+    .vine {
+        top: 18vh;
+        height: 55vh;
+    }
 }
 
-.universe-bolts::before {
-  left: 16%;
-  transform: rotate(17deg);
-  clip-path: polygon(48% 0, 100% 0, 61% 28%, 92% 28%, 45% 62%, 67% 62%, 25% 100%, 37% 61%, 8% 61%, 47% 27%, 18% 27%);
-  background: linear-gradient(to bottom, rgba(255,255,255,.98), #73c7ff 35%, #187dff 70%, transparent);
-  animation: bgBolt 4.8s infinite;
+/* =========================
+   LARGE PC
+========================= */
+
+@media (min-width: 1200px) {
+
+    .flower {
+        width: 10vw;
+        max-width: 150px;
+    }
+
+    .name {
+        font-size: 8vw;
+    }
 }
-
-.universe-bolts::after {
-  left: 78%;
-  height: 65vh;
-  transform: rotate(-20deg);
-  clip-path: polygon(45% 0, 100% 0, 60% 30%, 90% 30%, 42% 64%, 64% 64%, 20% 100%, 35% 63%, 7% 63%, 46% 29%, 17% 29%);
-  background: linear-gradient(to bottom, rgba(255,255,255,.98), #9bdaff 35%, #277bff 70%, transparent);
-  animation: bgBolt 6.2s 1.7s infinite;
-}
-
-.bg-bolt {
-  position: absolute;
-  width: 170px;
-  height: 330px;
-  opacity: 0;
-  filter: drop-shadow(0 0 3px white) drop-shadow(0 0 10px #55b9ff) drop-shadow(0 0 24px #006eff);
-  background: linear-gradient(155deg, rgba(255,255,255,.98), #64baff 38%, #116bff 70%, transparent);
-  clip-path: polygon(44% 0, 76% 0, 57% 26%, 84% 26%, 50% 48%, 72% 48%, 25% 100%, 38% 55%, 8% 55%, 44% 30%, 20% 30%);
-}
-
-.bg-bolt.one { left: 31%; top: 4%; transform: rotate(-12deg) scale(.72); animation: bgBolt 5.5s 2.3s infinite; }
-.bg-bolt.two { left: 56%; top: 46%; transform: rotate(18deg) scale(.58); animation: bgBolt 7s 3.1s infinite; }
-.bg-bolt.three { left: 5%; top: 52%; transform: rotate(-28deg) scale(.48); animation: bgBolt 6.3s 4.2s infinite; }
-
-.universe-bolt-flash {
-  position: fixed;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background: radial-gradient(circle at 50% 45%, rgba(150,220,255,.20), transparent 48%),
-              rgba(170,220,255,0);
-  opacity: 0;
-  animation: universeFlash 5.5s 2.3s infinite;
-}
-
-@keyframes bgBolt {
-  0%, 82%, 100% { opacity: 0; }
-  83% { opacity: .05; }
-  84% { opacity: 1; }
-  85% { opacity: .08; }
-  86% { opacity: .95; }
-  88% { opacity: 0; }
-}
-
-@keyframes universeFlash {
-  0%, 82%, 100% { opacity: 0; }
-  83% { opacity: .05; }
-  84% { opacity: .32; }
-  85% { opacity: 0; }
-  86% { opacity: .18; }
-  88% { opacity: 0; }
-}
-
-
-/* ===== THIN LINE-STYLE LIGHTNING ===== */
-.line-lightning {
-  position: fixed;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  overflow: hidden;
-}
-.line-lightning span {
-  position: absolute;
-  display: block;
-  height: 2px;
-  transform-origin: left center;
-  opacity: 0;
-  border-radius: 99px;
-  background: linear-gradient(90deg, transparent, #bfeaff 15%, #fff 50%, #62baff 82%, transparent);
-  box-shadow: 0 0 3px #fff, 0 0 9px #59baff, 0 0 18px #168cff;
-}
-.line-lightning .l1 { width: 430px; left: -40px; top: 27%; transform: rotate(19deg); animation: lineStrike 4.7s 1s infinite; }
-.line-lightning .l2 { width: 360px; left: 58%; top: 19%; transform: rotate(-25deg); animation: lineStrike 5.8s 2.7s infinite; }
-.line-lightning .l3 { width: 520px; left: 31%; top: 71%; transform: rotate(-13deg); animation: lineStrike 6.2s 4s infinite; }
-.line-lightning .l4 { width: 280px; left: 73%; top: 61%; transform: rotate(31deg); animation: lineStrike 5.1s 3.4s infinite; }
-
-.line-lightning span::after {
-  content: "";
-  position: absolute;
-  left: 22%;
-  top: -7px;
-  width: 55%;
-  height: 16px;
-  background: inherit;
-  filter: blur(7px);
-  opacity: .75;
-}
-
-@keyframes lineStrike {
-  0%, 83%, 100% { opacity: 0; }
-  84% { opacity: .25; }
-  85% { opacity: 1; }
-  86% { opacity: .15; }
-  87% { opacity: .85; }
-  89% { opacity: 0; }
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="line-lightning" aria-hidden="true">
-  <span class="l1"></span>
-  <span class="l2"></span>
-  <span class="l3"></span>
-  <span class="l4"></span>
+<div class="background-glow"></div>
+
+<div class="name">cali</div>
+
+<!-- MAGICAL ENERGY -->
+<div class="vine vine1"></div>
+<div class="vine vine2"></div>
+<div class="vine vine3"></div>
+<div class="vine vine4"></div>
+
+<div class="energy" style="left:48%;top:18vh;animation-delay:0s"></div>
+<div class="energy" style="left:52%;top:20vh;animation-delay:.7s"></div>
+<div class="energy" style="left:45%;top:19vh;animation-delay:1.3s"></div>
+<div class="energy" style="left:56%;top:20vh;animation-delay:2s"></div>
+
+
+<!-- LEFT FLOWER -->
+
+<div class="flower leftFlower"
+     style="left:22%;animation-delay:.5s">
+
+    <div class="stem"></div>
+
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+    <div class="leaf left l3"></div>
+    <div class="leaf right l4"></div>
+    <div class="leaf left l5"></div>
+
+    <div class="head">
+
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+
+        <div class="center"></div>
+
+    </div>
 </div>
 
 
-<div class="space">
+<!-- CENTER FLOWER -->
 
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
+<div class="flower centerFlower"
+     style="animation-delay:1s">
 
-    <div class="nebula"></div>
+    <div class="stem"></div>
 
-    <!-- SOLAR SYSTEM -->
-    <div class="solar-system">
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+    <div class="leaf left l3"></div>
+    <div class="leaf right l4"></div>
+    <div class="leaf left l5"></div>
 
-        <div class="orbit orbit1"></div>
-        <div class="orbit orbit2"></div>
-        <div class="orbit orbit3"></div>
-        <div class="orbit orbit4"></div>
-        <div class="orbit orbit5"></div>
+    <div class="head">
 
-        <div class="sun"></div>
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
 
-        <div class="planet planet1"></div>
-        <div class="planet planet2"></div>
-        <div class="planet planet3"></div>
-        <div class="planet planet4"></div>
-        <div class="planet planet5"></div>
-
-    </div>
-
-    <!-- CALI METEORS -->
-    <div class="meteor"></div>
-    <div class="meteor meteor2"></div>
-    <div class="meteor meteor3"></div>
-
-    <!-- ROMANTIC CENTER -->
-    <div class="content">
-
-        <div class="small-title">
-            written in the stars
-        </div>
-
-        <h1>
-            Your Universe
-        </h1>
-
-        <div class="heart">
-            ♥
-        </div>
-
-        <div class="message">
-            In a universe full of stars,<br>
-            you are my favorite.
-        </div>
+        <div class="center"></div>
 
     </div>
-
-    <div class="floating-heart heart1">♥</div>
-    <div class="floating-heart heart2">♥</div>
-    <div class="floating-heart heart3">♥</div>
-    <div class="floating-heart heart1">♥</div>
-
 </div>
 
 
-<script>
-/* BIG LIGHTNING + THUNDER EFFECT */
-const lightningRoot = document.querySelector('.space');
-const thunderCloud = document.querySelector('.thunder-cloud');
-const mainMeteor = document.querySelector('.meteor');
+<!-- RIGHT FLOWER -->
 
-let audioContext;
+<div class="flower rightFlower"
+     style="right:22%;animation-delay:1.5s">
 
-function thunderSound() {
-    // Browser-safe: audio only after the visitor has interacted with the page.
-    if (!audioContext) return;
+    <div class="stem"></div>
 
-    const now = audioContext.currentTime;
-    const duration = 1.2;
-    const buffer = audioContext.createBuffer(1, audioContext.sampleRate * duration, audioContext.sampleRate);
-    const data = buffer.getChannelData(0);
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+    <div class="leaf left l3"></div>
+    <div class="leaf right l4"></div>
+    <div class="leaf left l5"></div>
 
-    for (let i = 0; i < data.length; i++) {
-        const t = i / audioContext.sampleRate;
-        const envelope = Math.max(0, 1 - t / duration);
-        data[i] = (Math.random() * 2 - 1) * envelope * envelope;
-    }
+    <div class="head">
 
-    const noise = audioContext.createBufferSource();
-    const filter = audioContext.createBiquadFilter();
-    const gain = audioContext.createGain();
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
 
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(180, now);
-    filter.frequency.exponentialRampToValueAtTime(55, now + duration);
+        <div class="center"></div>
 
-    gain.gain.setValueAtTime(0.001, now);
-    gain.gain.exponentialRampToValueAtTime(0.5, now + 0.03);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+    </div>
+</div>
 
-    noise.buffer = buffer;
-    noise.connect(filter);
-    filter.connect(gain);
-    gain.connect(audioContext.destination);
-    noise.start(now);
-    noise.stop(now + duration);
-}
 
-function enableThunderAudio() {
-    if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    if (audioContext.state === 'suspended') audioContext.resume();
-    window.removeEventListener('pointerdown', enableThunderAudio);
-    window.removeEventListener('keydown', enableThunderAudio);
-}
+<!-- SMALL FLOWERS -->
 
-window.addEventListener('pointerdown', enableThunderAudio);
-window.addEventListener('keydown', enableThunderAudio);
+<div class="flower smallFlower"
+     style="left:2%;bottom:-7vh;animation-delay:2s">
 
-function triggerMegaLightning() {
-    thunderCloud.classList.remove('active');
-    lightningRoot.classList.remove('thunder-shake', 'lightning-now');
+    <div class="stem"></div>
 
-    void thunderCloud.offsetWidth;
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
 
-    thunderCloud.classList.add('active');
-    lightningRoot.classList.add('thunder-shake', 'lightning-now');
+    <div class="head">
 
-    thunderSound();
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
 
-    setTimeout(() => {
-        thunderCloud.classList.remove('active');
-        lightningRoot.classList.remove('thunder-shake', 'lightning-now');
-    }, 1050);
-}
+        <div class="center"></div>
 
-// Trigger exactly when the main named meteor completes a crossing.
-mainMeteor.addEventListener('animationiteration', triggerMegaLightning);
+    </div>
+</div>
 
-// Also guarantee visible strikes even if animation events are throttled.
-setInterval(triggerMegaLightning, 7000);
 
-// Immediate dramatic strike so it is visible on first load.
-setTimeout(triggerMegaLightning, 900);
-</script>
+<div class="flower smallFlower"
+     style="right:2%;bottom:-7vh;animation-delay:2.5s">
+
+    <div class="stem"></div>
+
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+
+    <div class="head">
+
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+
+        <div class="center"></div>
+
+    </div>
+</div>
+
+
+<!-- FLOATING SPARKS -->
+
+<div class="spark" style="left:12%;top:80%;animation-delay:0s"></div>
+<div class="spark" style="left:25%;top:70%;animation-delay:1s"></div>
+<div class="spark" style="left:38%;top:85%;animation-delay:2s"></div>
+<div class="spark" style="left:52%;top:75%;animation-delay:.5s"></div>
+<div class="spark" style="left:66%;top:85%;animation-delay:2.5s"></div>
+<div class="spark" style="left:80%;top:70%;animation-delay:1.5s"></div>
+<div class="spark" style="left:90%;top:82%;animation-delay:3s"></div>
 
 </body>
-</html>
+    </html>
