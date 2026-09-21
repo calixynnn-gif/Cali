@@ -1,475 +1,836 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cali</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cali</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            #180a02 0%,
+            #070302 45%,
+            #000 100%
+        );
+    font-family: cursive;
+}
+
+
+/* STAR FIELD */
+.stars,
+.stars::before,
+.stars::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+.stars {
+    z-index: 1;
+    overflow: hidden;
+    background-image:
+        radial-gradient(circle at 8% 18%, rgba(255,255,220,.95) 0 1px, transparent 1.7px),
+        radial-gradient(circle at 18% 42%, rgba(255,215,130,.8) 0 1.2px, transparent 2px),
+        radial-gradient(circle at 29% 12%, rgba(255,255,255,.9) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 41% 31%, rgba(255,230,160,.85) 0 1.3px, transparent 2px),
+        radial-gradient(circle at 53% 9%, rgba(255,255,255,.9) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 64% 23%, rgba(255,220,150,.8) 0 1.2px, transparent 2px),
+        radial-gradient(circle at 76% 11%, rgba(255,255,255,.95) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 88% 28%, rgba(255,230,170,.8) 0 1.2px, transparent 2px),
+        radial-gradient(circle at 95% 8%, rgba(255,255,255,.9) 0 1px, transparent 1.8px);
+    opacity: .85;
+    animation: starsTwinkle 4s ease-in-out infinite;
+}
+
+.stars::before {
+    background-image:
+        radial-gradient(circle at 5% 58%, rgba(255,255,255,.75) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 15% 76%, rgba(255,220,140,.75) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 34% 67%, rgba(255,255,255,.8) 0 1.1px, transparent 2px),
+        radial-gradient(circle at 48% 53%, rgba(255,225,150,.75) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 61% 72%, rgba(255,255,255,.8) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 73% 54%, rgba(255,220,140,.8) 0 1.2px, transparent 2px),
+        radial-gradient(circle at 84% 70%, rgba(255,255,255,.8) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 98% 60%, rgba(255,230,160,.75) 0 1px, transparent 1.8px);
+    transform: scale(1.25);
+    opacity: .7;
+    animation: starDrift 12s linear infinite;
+}
+
+.stars::after {
+    background:
+        radial-gradient(circle at 22% 25%, rgba(255,190,60,.12), transparent 18%),
+        radial-gradient(circle at 78% 35%, rgba(255,130,30,.10), transparent 20%);
+    filter: blur(10px);
+}
+
+@keyframes starsTwinkle {
+    0%, 100% { opacity: .55; }
+    50% { opacity: 1; }
+}
+
+@keyframes starDrift {
+    from { transform: scale(1.25) translateY(0); }
+    to { transform: scale(1.25) translateY(-2vh); }
+}
+
+/* Tiny glowing star-crosses for extra magic */
+.star-cross {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fffbd0;
+    box-shadow: 0 0 5px #fff, 0 0 14px #ffc400;
+    z-index: 2;
+    animation: starPulse 2.8s ease-in-out infinite;
+}
+.star-cross::before,
+.star-cross::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,240,170,.8);
+}
+.star-cross::before { width: 18px; height: 1px; }
+.star-cross::after { width: 1px; height: 18px; }
+
+@keyframes starPulse {
+    0%,100% { transform: scale(.65); opacity: .35; }
+    50% { transform: scale(1.15); opacity: 1; }
+}
+
+/* BACKGROUND LIGHT */
+
+.background-glow {
+    position: absolute;
+    width: 60vw;
+    height: 30vh;
+    left: 50%;
+    bottom: -10vh;
+    transform: translateX(-50%);
+    background: #ff4b00;
+    filter: blur(10vw);
+    opacity: .12;
+}
+
+/* CALI */
+
+.name {
+    position: absolute;
+    top: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: clamp(55px, 9vw, 125px);
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: clamp(3px, .7vw, 10px);
+
+    color: #fff5a3;
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 5px #fff,
+        0 0 15px #ffd000,
+        0 0 30px #ff8c00,
+        0 0 60px #ff4b00,
+        0 0 100px #ff3000;
+
+    animation: nameGlow 2.5s ease-in-out infinite;
+
+    z-index: 30;
+}
+
+@keyframes nameGlow {
+    0%,100% {
+        filter: brightness(.9);
+    }
+
+    50% {
+        filter: brightness(1.4);
+    }
+}
+
+/* MAGIC ENERGY */
+
+.vine {
+    position: absolute;
+    top: 19vh;
+    left: 50%;
+
+    width: clamp(1px, .25vw, 3px);
+    height: 43vh;
+
+    background: linear-gradient(
+        to bottom,
+        #fff36b,
+        #ff8700,
+        transparent
+    );
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    filter:
+        drop-shadow(0 0 5px #ffcf00)
+        drop-shadow(0 0 15px #ff5a00);
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    opacity: .8;
+    z-index: 5;
 
-        html, body {
-            margin: 0;
-            width: 100%;
-            height: 100%;
-        }
+    transform-origin: top;
+}
 
-        body {
-            background:
-                radial-gradient(circle at center, #10251d, #030605 65%, #000);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: "Courier New", monospace;
-            overflow: hidden;
-        }
+.vine1 {
+    transform: rotate(-25deg);
+}
+
+.vine2 {
+    transform: rotate(25deg);
+}
+
+.vine3 {
+    transform: rotate(-10deg);
+}
 
-        /* MAIN MONITOR */
+.vine4 {
+    transform: rotate(10deg);
+}
 
-        .monitor {
-            position: relative;
-            width: min(94vw, 1100px);
-            height: min(88vh, 620px);
+/* ENERGY PARTICLES */
 
-            background: #06100c;
-            border: clamp(2px, .3vw, 4px) solid #1b382c;
-            border-radius: clamp(12px, 2vw, 22px);
+.energy {
+    position: absolute;
 
-            overflow: hidden;
+    width: clamp(4px, .5vw, 8px);
+    height: clamp(4px, .5vw, 8px);
 
-            box-shadow:
-                0 0 25px rgba(0,255,136,.35),
-                inset 0 0 60px rgba(0,255,136,.05);
-        }
+    border-radius: 50%;
+    background: #fff8a0;
 
-        /* GRID */
+    box-shadow:
+        0 0 8px white,
+        0 0 20px #ffb000,
+        0 0 35px #ff4b00;
 
-        .grid {
-            position: absolute;
-            inset: 0;
+    animation: energyMove 3s linear infinite;
 
-            background-image:
-                linear-gradient(rgba(0,255,136,.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,255,136,.07) 1px, transparent 1px);
+    z-index: 20;
+}
 
-            background-size: clamp(20px, 3vw, 38px)
-                             clamp(20px, 3vw, 38px);
-        }
+@keyframes energyMove {
+    0% {
+        transform: translateY(0) scale(.4);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(42vh) scale(1.3);
+        opacity: 0;
+    }
+}
 
-        /* HEADER */
+/* FLOWER */
 
-        .header {
-            position: absolute;
-            top: 4%;
-            left: 3%;
+.flower {
+    position: absolute;
 
-            color: #00ff88;
+    width: clamp(75px, 9vw, 135px);
+    height: clamp(280px, 48vh, 470px);
 
-            font-size: clamp(11px, 1.5vw, 20px);
+    bottom: -5vh;
 
-            letter-spacing: clamp(1px, .3vw, 4px);
+    transform-origin: bottom center;
 
-            text-shadow: 0 0 10px #00ff88;
-        }
+    animation: sway 5s ease-in-out infinite;
 
-        .live {
-            color: #ff3158;
-            margin-left: 10px;
-            animation: blink 2s infinite;
-        }
+    z-index: 10;
+}
 
-        /* BPM */
+@keyframes sway {
+    0%,100% {
+        rotate: -2deg;
+    }
 
-        .bpm {
-            position: absolute;
+    50% {
+        rotate: 2deg;
+    }
+}
 
-            top: 3%;
-            right: 3%;
+/* STEM */
 
-            text-align: right;
-            color: #00ff88;
-        }
+.stem {
+    position: absolute;
 
-        .bpm-number {
-            font-size: clamp(28px, 5vw, 55px);
-            font-weight: bold;
+    width: clamp(3px, .35vw, 6px);
+    height: 80%;
 
-            text-shadow:
-                0 0 10px #00ff88,
-                0 0 20px #00ff88;
-        }
+    bottom: 0;
+    left: 50%;
 
-        .bpm-label {
-            color: #608578;
-            font-size: clamp(9px, 1.2vw, 14px);
-        }
+    transform: translateX(-50%);
 
-        /* HEART */
+    background: linear-gradient(
+        to right,
+        #351004,
+        #ff4b08,
+        #5a1604
+    );
 
-        .heart {
-            position: absolute;
+    box-shadow:
+        0 0 8px #ff4b08,
+        0 0 20px #ff3900;
+}
 
-            top: 22%;
-            left: 50%;
+/* LEAVES */
 
-            transform: translateX(-50%);
+.leaf {
+    position: absolute;
 
-            font-family: Arial, sans-serif;
+    width: clamp(30px, 4vw, 55px);
+    height: clamp(13px, 1.7vw, 23px);
 
-            font-size: clamp(65px, 10vw, 120px);
+    background: linear-gradient(
+        90deg,
+        #421406,
+        #e34b0a
+    );
 
-            color: #ff1744;
+    border-radius: 100% 0 100% 0;
 
-            text-shadow:
-                0 0 10px #ff1744,
-                0 0 30px #ff1744,
-                0 0 60px #ff1744;
+    box-shadow:
+        0 0 8px #ff4b08,
+        0 0 18px #ff3500;
+}
 
-            animation: slowBeat 2.4s infinite;
+.left {
+    left: 5%;
+    transform: rotate(-30deg);
+}
 
-            z-index: 5;
-        }
+.right {
+    right: 5%;
+    transform: rotate(30deg) scaleX(-1);
+}
 
-        /* SLOW HEARTBEAT */
+.l1 { bottom: 16%; }
+.l2 { bottom: 26%; }
+.l3 { bottom: 36%; }
+.l4 { bottom: 46%; }
+.l5 { bottom: 56%; }
 
-        @keyframes slowBeat {
+/* FLOWER HEAD */
 
-            0% {
-                transform: translateX(-50%) scale(1);
-            }
+.head {
+    position: absolute;
 
-            18% {
-                transform: translateX(-50%) scale(1.13);
-            }
+    width: 100%;
+    aspect-ratio: 1;
 
-            27% {
-                transform: translateX(-50%) scale(1);
-            }
+    left: 0;
+    bottom: 73%;
+}
 
-            38% {
-                transform: translateX(-50%) scale(1.09);
-            }
+/* PETALS */
 
-            48% {
-                transform: translateX(-50%) scale(1);
-            }
+.petal {
+    position: absolute;
 
-            100% {
-                transform: translateX(-50%) scale(1);
-            }
-        }
+    width: 34%;
+    height: 55%;
 
-        /* ECG AREA */
+    left: 33%;
+    top: 23%;
 
-        .ecg-box {
-            position: absolute;
+    border-radius: 50% 50% 45% 45%;
 
-            left: 0;
-            right: 0;
+    background: linear-gradient(
+        to bottom,
+        #ff8700,
+        #ff3b00
+    );
 
-            bottom: 20%;
-            height: 27%;
+    transform-origin: 50% 100%;
 
-            overflow: hidden;
-        }
+    box-shadow:
+        0 0 10px #ff6500,
+        0 0 25px #ff4200,
+        0 0 50px #ff2500;
 
-        .ecg {
-            width: 200%;
-            height: 100%;
+    animation: petalGlow 2s ease-in-out infinite;
+}
 
-            animation: ecgMove 4.8s linear infinite;
-        }
+@keyframes petalGlow {
+    0%,100% {
+        filter: brightness(.9);
+    }
 
-        .line {
-            fill: none;
+    50% {
+        filter: brightness(1.4);
+    }
+}
 
-            stroke: #00ff88;
+.p1 { transform: rotate(0deg); }
+.p2 { transform: rotate(45deg); }
+.p3 { transform: rotate(90deg); }
+.p4 { transform: rotate(135deg); }
+.p5 { transform: rotate(180deg); }
+.p6 { transform: rotate(225deg); }
+.p7 { transform: rotate(270deg); }
+.p8 { transform: rotate(315deg); }
 
-            stroke-width: 3;
+/* CENTER */
 
-            filter:
-                drop-shadow(0 0 5px #00ff88)
-                drop-shadow(0 0 10px #00ff88);
-        }
+.center {
+    position: absolute;
 
-        @keyframes ecgMove {
+    width: 35%;
+    aspect-ratio: 1;
 
-            from {
-                transform: translateX(0);
-            }
+    left: 32.5%;
+    top: 33%;
 
-            to {
-                transform: translateX(-50%);
-            }
-        }
+    border-radius: 50%;
 
-        /* PATIENT */
+    background: radial-gradient(
+        circle,
+        #fff 0%,
+        #fff36a 30%,
+        #ffb000 65%,
+        #ff4b00 100%
+    );
 
-        .patient {
-            position: absolute;
+    z-index: 10;
 
-            bottom: 4%;
-            left: 3%;
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #fff000,
+        0 0 50px #ff9d00,
+        0 0 80px #ff4500;
 
-            color: #00ff88;
+    animation: centerPulse 1.8s infinite;
+}
 
-            font-size: clamp(9px, 1.2vw, 14px);
+@keyframes centerPulse {
+    0%,100% {
+        scale: .9;
+    }
 
-            line-height: 1.7;
-        }
+    50% {
+        scale: 1.15;
+    }
+}
 
-        .label {
-            color: #55786a;
-        }
+/* SPARKS */
 
-        /* STATUS */
+.spark {
+    position: absolute;
 
-        .status {
-            position: absolute;
+    width: clamp(3px, .4vw, 6px);
+    height: clamp(3px, .4vw, 6px);
 
-            bottom: 4%;
-            right: 3%;
+    border-radius: 50%;
 
-            text-align: right;
+    background: #ffd36b;
 
-            color: #00ff88;
+    box-shadow:
+        0 0 10px #ff8c00,
+        0 0 25px #ff4500;
 
-            font-size: clamp(8px, 1.1vw, 13px);
+    animation: float 5s linear infinite;
+}
 
-            line-height: 1.7;
-        }
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
 
-        .dot {
-            display: inline-block;
+    20% {
+        opacity: 1;
+    }
 
-            width: clamp(6px, 1vw, 10px);
-            height: clamp(6px, 1vw, 10px);
+    80% {
+        opacity: 1;
+    }
 
-            background: #00ff88;
+    100% {
+        transform: translateY(-45vh);
+        opacity: 0;
+    }
+}
 
-            border-radius: 50%;
+/* =========================
+   DEFAULT = PC / LAPTOP
+========================= */
+
+.leftFlower {
+    left: 22%;
+}
 
-            box-shadow: 0 0 10px #00ff88;
-
-            animation: blink 2s infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: .2;
-            }
-        }
-
-        /* PHONE */
-
-        @media (max-width: 600px) {
-
-            body {
-                padding: 10px;
-            }
-
-            .monitor {
-                width: 100%;
-                height: 88vh;
-
-                border-radius: 14px;
-            }
-
-            .header {
-                top: 4%;
-                left: 5%;
-            }
-
-            .bpm {
-                top: 4%;
-                right: 5%;
-            }
-
-            .heart {
-                top: 24%;
-            }
-
-            .ecg-box {
-                bottom: 23%;
-                height: 22%;
-            }
-
-            .patient {
-                left: 5%;
-                bottom: 5%;
-            }
-
-            .status {
-                right: 5%;
-                bottom: 5%;
-            }
-        }
-
-        /* SMALL PHONE */
-
-        @media (max-width: 380px) {
-
-            .monitor {
-                height: 90vh;
-            }
-
-            .heart {
-                top: 25%;
-                font-size: 65px;
-            }
-
-            .ecg-box {
-                bottom: 25%;
-                height: 20%;
-            }
-
-            .status {
-                display: none;
-            }
-        }
-
-        /* LAPTOP / PC */
-
-        @media (min-width: 1000px) {
-
-            .monitor {
-                width: min(90vw, 1200px);
-                height: min(86vh, 680px);
-            }
-
-            .heart {
-                top: 20%;
-            }
-
-            .ecg-box {
-                height: 28%;
-                bottom: 19%;
-            }
-        }
-    </style>
+.centerFlower {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rightFlower {
+    right: 22%;
+}
+
+.smallFlower {
+    transform: scale(.8);
+}
+
+/* =========================
+   PHONE SETUP
+   768px and below = phone
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    .name {
+        top: 5vh;
+        font-size: clamp(40px, 15vw, 80px);
+        letter-spacing: 2px;
+    }
+
+    .vine {
+        top: 20vh;
+        height: 35vh;
+    }
+
+    .flower {
+        width: 22vw;
+        height: 45vh;
+        bottom: -5vh;
+    }
+
+    .leftFlower {
+        left: 3vw;
+    }
+
+    .centerFlower {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .rightFlower {
+        right: 3vw;
+    }
+
+    .smallFlower {
+        transform: scale(.6);
+    }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media screen and (max-width: 380px) {
+
+    .name {
+        font-size: 18vw;
+        top: 5vh;
+    }
+
+    .flower {
+        width: 25vw;
+        height: 45vh;
+    }
+
+    .flower.centerFlower {
+        width: 30vw;
+    }
+
+    .smallFlower {
+        display: none;
+    }
+}
+
+/* =========================
+   LARGE PC / LAPTOP
+========================= */
+
+@media screen and (min-width: 1200px) {
+
+    .flower {
+        width: 10vw;
+        max-width: 150px;
+    }
+
+    .name {
+        font-size: 8vw;
+    }
+}
+
+
+/* SHOOTING STAR */
+.shooting-star {
+    position: absolute;
+    top: 12%;
+    left: 75%;
+    width: 140px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        rgba(255,255,255,.7),
+        #fff
+    );
+    border-radius: 50%;
+    filter:
+        drop-shadow(0 0 5px white)
+        drop-shadow(0 0 12px #ffd84d);
+    transform: rotate(25deg);
+    opacity: 0;
+    z-index: 3;
+    animation: shootingStar 6s linear infinite;
+}
+
+.shooting-star::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: white;
+    box-shadow:
+        0 0 6px white,
+        0 0 15px #fff4a3,
+        0 0 25px #ffb300;
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: translate(0, 0) rotate(25deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    25% {
+        transform: translate(-45vw, 25vh) rotate(25deg);
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-45vw, 25vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <div class="monitor">
 
-        <div class="grid"></div>
+<div class="stars"></div>
+<div class="shooting-star"></div>
+<div class="star-cross" style="left:14%;top:22%;animation-delay:.2s"></div>
+<div class="star-cross" style="left:31%;top:16%;animation-delay:1.1s"></div>
+<div class="star-cross" style="left:70%;top:17%;animation-delay:.7s"></div>
+<div class="star-cross" style="left:86%;top:39%;animation-delay:1.8s"></div>
+<div class="star-cross" style="left:9%;top:48%;animation-delay:1.4s"></div>
+<div class="star-cross" style="left:92%;top:72%;animation-delay:.5s"></div>
 
-        <div class="header">
-            ♥ WEL HEART MONITOR
-            <span class="live">● LIVE</span>
-        </div>
+<div class="background-glow"></div>
 
-        <div class="bpm">
-            <div class="bpm-number" id="bpm">72</div>
-            <div class="bpm-label">BPM</div>
-        </div>
+<div class="name">Cali</div>
 
-        <div class="heart">
-            ♥
-        </div>
+<!-- MAGICAL ENERGY -->
+<div class="vine vine1"></div>
+<div class="vine vine2"></div>
+<div class="vine vine3"></div>
+<div class="vine vine4"></div>
 
-        <div class="ecg-box">
+<div class="energy" style="left:48%;top:18vh;animation-delay:0s"></div>
+<div class="energy" style="left:52%;top:20vh;animation-delay:.7s"></div>
+<div class="energy" style="left:45%;top:19vh;animation-delay:1.3s"></div>
+<div class="energy" style="left:56%;top:20vh;animation-delay:2s"></div>
 
-            <svg class="ecg"
-                 viewBox="0 0 1200 150"
-                 preserveAspectRatio="none">
 
-                <polyline class="line"
-                    points="
-                    0,75
-                    100,75
-                    160,75
-                    180,75
-                    195,35
-                    210,115
-                    225,75
-                    300,75
-                    380,75
-                    450,75
-                    510,75
-                    530,75
-                    545,35
-                    560,115
-                    575,75
-                    650,75
-                    730,75
-                    800,75
-                    860,75
-                    880,75
-                    895,35
-                    910,115
-                    925,75
-                    1000,75
-                    1100,75
-                    1200,75
-                    ">
-                </polyline>
+<!-- LEFT FLOWER -->
 
-                <polyline class="line"
-                    points="
-                    1200,75
-                    1300,75
-                    1360,75
-                    1380,75
-                    1395,35
-                    1410,115
-                    1425,75
-                    1500,75
-                    1580,75
-                    1650,75
-                    1710,75
-                    1730,75
-                    1745,35
-                    1760,115
-                    1775,75
-                    1850,75
-                    1930,75
-                    2000,75
-                    2060,75
-                    2080,75
-                    2095,35
-                    2110,115
-                    2125,75
-                    2200,75
-                    2300,75
-                    2400,75
-                    ">
-                </polyline>
+<div class="flower leftFlower"
+     style="left:22%;animation-delay:.5s">
 
-            </svg>
+    <div class="stem"></div>
 
-        </div>
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+    <div class="leaf left l3"></div>
+    <div class="leaf right l4"></div>
+    <div class="leaf left l5"></div>
 
-        <div class="patient">
-            <span class="label">PATIENT:</span> CALI<br>
-            <span class="label">RHYTHM:</span> SINUS<br>
-            <span class="label">STATUS:</span> STABLE
-        </div>
+    <div class="head">
 
-        <div class="status">
-            <span class="dot"></span>
-            SYSTEM ONLINE<br>
-            MONITORING ACTIVE
-        </div>
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+
+        <div class="center"></div>
 
     </div>
+</div>
 
-    <script>
 
-        const bpm = document.getElementById("bpm");
+<!-- CENTER FLOWER -->
 
-        setInterval(() => {
+<div class="flower centerFlower"
+     style="animation-delay:1s">
 
-            let value = 70 + Math.floor(Math.random() * 6);
+    <div class="stem"></div>
 
-            bpm.textContent = value;
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+    <div class="leaf left l3"></div>
+    <div class="leaf right l4"></div>
+    <div class="leaf left l5"></div>
 
-        }, 2400);
+    <div class="head">
 
-    </script>
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+
+        <div class="center"></div>
+
+    </div>
+</div>
+
+
+<!-- RIGHT FLOWER -->
+
+<div class="flower rightFlower"
+     style="right:22%;animation-delay:1.5s">
+
+    <div class="stem"></div>
+
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+    <div class="leaf left l3"></div>
+    <div class="leaf right l4"></div>
+    <div class="leaf left l5"></div>
+
+    <div class="head">
+
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+
+        <div class="center"></div>
+
+    </div>
+</div>
+
+
+<!-- SMALL FLOWERS -->
+
+<div class="flower smallFlower"
+     style="left:2%;bottom:-7vh;animation-delay:2s">
+
+    <div class="stem"></div>
+
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+
+    <div class="head">
+
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+
+        <div class="center"></div>
+
+    </div>
+</div>
+
+
+<div class="flower smallFlower"
+     style="right:2%;bottom:-7vh;animation-delay:2.5s">
+
+    <div class="stem"></div>
+
+    <div class="leaf left l1"></div>
+    <div class="leaf right l2"></div>
+
+    <div class="head">
+
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
+
+        <div class="center"></div>
+
+    </div>
+</div>
+
+
+<!-- FLOATING SPARKS -->
+
+<div class="spark" style="left:12%;top:80%;animation-delay:0s"></div>
+<div class="spark" style="left:25%;top:70%;animation-delay:1s"></div>
+<div class="spark" style="left:38%;top:85%;animation-delay:2s"></div>
+<div class="spark" style="left:52%;top:75%;animation-delay:.5s"></div>
+<div class="spark" style="left:66%;top:85%;animation-delay:2.5s"></div>
+<div class="spark" style="left:80%;top:70%;animation-delay:1.5s"></div>
+<div class="spark" style="left:90%;top:82%;animation-delay:3s"></div>
 
 </body>
-</html>
+    </html>
